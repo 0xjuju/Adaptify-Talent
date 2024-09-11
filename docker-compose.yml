@@ -1,0 +1,16 @@
+version: '3'
+services:
+
+  mongo:
+    image: mongo
+    container_name: my-mongo
+    ports:
+      - "27017:27017"
+
+  app:
+    build: .
+    container_name: git-scraper
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
