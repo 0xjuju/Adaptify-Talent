@@ -1,19 +1,9 @@
 import mongoose from "mongoose";
 
 
-const updateManyToManyRelationship = async (m1, model1Id, field1, m2, model2Id, field2) => {
-
-    const session = await mongoose.startSession();
-    session.startTransaction();
+const updateManyToManyRelationship = async (model1, field1, model2, field2) => {
 
     try {
-
-
-        const model1 = await m1.findById(model1Id).session(session);
-        const model2 = await m2.findById(model2Id).session(session);
-
-        console.log(model1, model2);
-
 
         if (!model1 || !model2) {
             throw new Error("Error retrieving Model");
@@ -28,18 +18,12 @@ const updateManyToManyRelationship = async (m1, model1Id, field1, m2, model2Id, 
             model2[field2].push(model1._id)
         }
 
-        await model1.save({ session, optimisticConcurrency: false });
-        await model2.save({ session, optimisticConcurrency: false });
+        await model1.save();
+        await model2.save();
 
-        await session.commitTransaction();
-        await session.endSession();
 
     } catch (err) {
         console.log(">>> ", err.message)
-        await session.abortTransaction();
-        await session.endSession();
-
-
     }
 };
 

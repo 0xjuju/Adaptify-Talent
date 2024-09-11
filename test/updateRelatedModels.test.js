@@ -15,11 +15,9 @@ describe("Test Related model updates", async () => {
         expect(testGithubAccount.users).to.not.includes(userId);
 
         await updateManyToManyRelationship(
-            User,
-            testUser._id,
+            testUser,
             "githubAccounts",
-            GithubAccount,
-            testGithubAccount._id,
+            testGithubAccount,
             "users"
         );
 

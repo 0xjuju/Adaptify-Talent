@@ -8,6 +8,7 @@ import User from "../models/User.js";
 
 
 let replSet;
+let session;
 
 
 const { expect}  = chai;
@@ -19,11 +20,12 @@ globalThis.testGithubAccount = null;
 beforeEach(async () => {
     await User.deleteMany({});
     await GithubAccount.deleteMany({});
+    await mongoose.connection.db.dropDatabase();
 
     globalThis.testUser = await User.create({ name: "Jermol", email: "test@test.com" });
     globalThis.testGithubAccount = await GithubAccount.create({ username: "0xjuju" });
 
-    await mongoose.connection.db.dropDatabase();
+
 });
 
 before(async () => {

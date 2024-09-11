@@ -5,8 +5,8 @@ export const createUser = async (req, res) => {
 
     try {
         const {name, email} = req.body;
-        const newUser = new User({name, email});
-        const savedUser = await newUser.save();
+        const newUser = new User({ name: name, email: email });
+        const savedUser = await newUser.save( {session: req.session });
 
         res.status(201).json(savedUser);
 

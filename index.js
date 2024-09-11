@@ -2,16 +2,18 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import githubAccountRoutes from "./routes/githubAccountRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
 import express from "express";
 import mongoose from "mongoose";
+import sessionMiddleware from "./middlewares/sessionMiddleware.js";
+import userRoutes from "./routes/userRoutes.js";
+
 
 const mongoDB = process.env.MONGODB_URI;
-
 const app = express();
 const port = 3000;
 
 
+app.use(sessionMiddleware);
 app.use(express.json());
 app.use('/users', userRoutes);
 app.use('/github-accounts', githubAccountRoutes);
