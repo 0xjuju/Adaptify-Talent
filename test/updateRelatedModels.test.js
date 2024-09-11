@@ -1,7 +1,7 @@
 
-// import GithubAccount from "../models/GithubAccount.js";
+import GithubAccount from "../models/GithubAccount.js";
 import updateManyToManyRelationship from "../services/updateRelatedModels.js";
-// import User from "../models/User.js";
+import User from "../models/User.js";
 
 
 
@@ -15,9 +15,11 @@ describe("Test Related model updates", async () => {
         expect(testGithubAccount.users).to.not.includes(userId);
 
         await updateManyToManyRelationship(
-            testUser,
+            User,
+            testUser._id,
             "githubAccounts",
-            testGithubAccount,
+            GithubAccount,
+            testGithubAccount._id,
             "users"
         );
 
