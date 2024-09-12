@@ -6,21 +6,16 @@ services:
     container_name: my-mongo
     ports:
       - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
 
   app:
     build: .
     container_name: git-scraper
     ports:
       - "3000:3000"
-    depends_on:
-      - mongo
-    volumes:
-      - .:/app
     environment:
       - NODE_ENV=production
-      - MONGODB_URI=mongodb://my-mongo:27017/your-database-name
+      - MONGODB_URI=${MONGODB_URI}
+    depends_on:
+      - mongo
 
-volumes:
-  mongo-data:
+

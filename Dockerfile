@@ -1,5 +1,5 @@
 # Stage 1: Build the React frontend
-FROM node:16 as build
+FROM node:22 as build
 
 WORKDIR /app
 
@@ -23,7 +23,7 @@ COPY frontend/ /app/frontend/
 RUN npm run build
 
 # Stage 2: Setup the Node.js backend and serve the frontend
-FROM node:16
+FROM node:22
 
 WORKDIR /app
 
