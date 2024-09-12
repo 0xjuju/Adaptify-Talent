@@ -6,6 +6,8 @@ services:
     container_name: my-mongo
     ports:
       - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 
   app:
     build: .
@@ -14,3 +16,11 @@ services:
       - "3000:3000"
     depends_on:
       - mongo
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://my-mongo:27017/your-database-name
+
+volumes:
+  mongo-data:

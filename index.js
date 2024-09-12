@@ -22,10 +22,6 @@ app.use(express.json());
 app.use('/users', userRoutes);
 app.use('/github-accounts', githubAccountRoutes);
 
-app.get("/", async (req, res) => {
-    res.send("Hello World! I'm a basic node server")
-});
-
 if (process.env.NODE_ENV !== "test" && process.env.NODE_ENV === "production") {
     mongoose.connect(mongoDB)
         .then(() => console.log("Connected to MongoDB"))
