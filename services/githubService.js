@@ -1,6 +1,11 @@
 
 import axios from "axios";
 
+/**
+ *
+ * @param {string} username - GitHub username
+ * @returns {Promise<axios.AxiosResponse<any>>} - List of gitHub repositories that belong to User
+ */
 
 export const getRepositoryByUsername = async (username) => {
     try {
