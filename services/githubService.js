@@ -17,7 +17,20 @@ export const getRepositoryByUsername = async (username) => {
     }
 }
 
+export const buildFileTree = async (repo) => {
+    const fileTree = {};
+    for (const item of repo) {
+        if (item.type() === "dir") {
+            const subDirContents = await axios.get(item.url);
+            fileTree[item.name] = await buildFileTree(subDirContents.data);
+        } else if (item.type === "file") {
+            fileTree[item.name] = { url: item.downloads_url }
+        }
+    }
 
+    return fileTree;
+
+}
 
 
 
