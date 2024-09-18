@@ -41,4 +41,4 @@ COPY --from=build /app/frontend/build ./frontend/build
 EXPOSE 3000
 
 # Command to run your Node.js backend
-CMD ["node", "index.js"]
+CMD ["node", "index.ts"]
