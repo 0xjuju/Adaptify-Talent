@@ -18,7 +18,9 @@ describe("Test github service return values", async () => {
     });
 
     it("should return a dictionary file map of the directory", async () => {
-        const project = ""
+        const projects = await getRepositoryByUsername("0xjuju");
+        const project = projects["data"].find((item: RepoProject) => item.name === "CopyTrader");
+        console.log(project);
     });
 });
 

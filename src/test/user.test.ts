@@ -15,7 +15,6 @@ describe("User Model Tests.. ",async () => {
         assert("_id" in savedUser);
     });
 
-
     it("Should received a response that includes the POSTed data and createdAt and updatedAt parameters", async () => {
         const newUser = {
             "name": "August",
