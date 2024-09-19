@@ -3,6 +3,16 @@ import mongoose from "mongoose";
 import { Request, Response,  NextFunction } from "express";
 
 
+/**
+ * Create session middleware for database requests
+ *
+ * @param req
+ * @param res
+ * @param next
+ *
+ * @returns null
+ */
+
 const sessionMiddleware = async (req: Request, res: Response,  next: NextFunction) => {
     const dbSession = await mongoose.startSession();
     dbSession.startTransaction();

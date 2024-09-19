@@ -1,4 +1,4 @@
-import { RepoProject } from "../interfaces/github.interface.js";
+import { RepoItem } from "../interfaces/github.interface.js";
 import { buildFileTree, getRepositoryByUsername, getRepoContent } from "../services/githubService.js";
 import assert from "assert";
 
@@ -10,7 +10,8 @@ describe("Test github service return values", async () => {
         assert("statusText" in projects);
         assert(projects["statusText"] === "OK");
         assert("data" in projects);
-        projects["data"].forEach( (item: RepoProject) => {
+
+        (projects["data"] as RepoItem[]).forEach( (item: RepoItem) => {
             assert("id" in item)
             if (item["id"] === 752421953) {
                 assert(item["url"] === "https://api.github.com/repos/0xjuju/Agent-TwitStor")

@@ -1,7 +1,14 @@
 import User from "../models/User.js";
 import { Request, Response  } from "express";
 
-
+/**
+ * User account
+ *
+ * @param req
+ * @param res
+ *
+ * @returns null - Save model to database
+ */
 export const createUser = async (req: Request, res: Response) => {
 
     try {

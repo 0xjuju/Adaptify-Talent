@@ -3,6 +3,11 @@ import { body, validationResult } from "express-validator";
 import { Request, Response, NextFunction } from "express";
 
 
+/**
+ * Validate the name and email field of the user model
+ *
+ */
+
 export const sanitizeAndValidateUser = [
 
     body("name")
