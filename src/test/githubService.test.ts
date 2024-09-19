@@ -1,5 +1,6 @@
 import { RepoProject } from "../interfaces/github.interface.js";
-import { getRepositoryByUsername, getRepoContent } from "../services/githubService.js";
+import { buildFileTree, getRepositoryByUsername, getRepoContent } from "../services/githubService.js";
+import assert from "assert";
 
 describe("Test github service return values", async () => {
 
@@ -18,8 +19,12 @@ describe("Test github service return values", async () => {
     });
 
     it("should return a dictionary file map of the directory", async () => {
-        const projects = await getRepositoryByUsername("0xjuju");
-        const project = projects["data"].find((item: RepoProject) => item.name === "CopyTrader");
+        const files = await getRepoContent("0xjuju", "CopyTrader");
+        const tree = await buildFileTree(files);
+        assert("algorithms" in tree);
+        assert("manage.py" in tree);
+        assert.strictEqual(tree["blockchain"]["management"]["commands"]["create_webhooks_for_wallet.py"],
+            "https://raw.githubusercontent.com/0xjuju/CopyTrader/master/blockchain/management/commands/create_webhooks_for_wallet.py");
     });
 
     it("should return a list of file directories for a github repository", async () => {

@@ -19,7 +19,7 @@ export const buildFileTree = async (repo: RepoItem[]) => {
             const subDirContents = await axios.get(item.url);
             fileTree[item.name] = await buildFileTree(subDirContents.data);
         } else if (item.type === "file") {
-            fileTree[item.name] = { url: item.downloads_url }
+            fileTree[item.name] = item.download_url
         }
     }
     return fileTree;
@@ -32,7 +32,7 @@ export const getRepoContent = async (owner: string, repoName: string) => {
         name: item.name,
         type: item.type,
         url: item.url,
-        download_url: item.downloads_url
+        download_url: item.download_url
     }))
 };
 
