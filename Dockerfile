@@ -15,6 +15,7 @@ COPY frontend/ /app/frontend/
 
 RUN npm run build
 
+# Setup the Node.js backend and serve the frontend
 FROM node:22
 
 WORKDIR /app
@@ -24,11 +25,8 @@ RUN npm install
 
 COPY . .
 
-RUN npm install -g typescript
-
-RUN tsc
-
-COPY --from=build /app/frontend/build ./frontend/build
+# Copy the built React frontend files from the previous stage to the dist folder
+COPY --from=build /app/frontend/build ./dist/frontend/build
 
 EXPOSE 3000
 

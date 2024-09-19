@@ -28,17 +28,17 @@ app.use(express.json());
 app.use('/users', userRoutes);
 app.use('/github-accounts', githubAccountRoutes);
 
+// Serve React frontend
+app.use(express.static(path.join(__dirname, "frontend/build")));
+app.get("*", (_, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+});
 
-if (process.env.NODE_ENV !== "test" && process.env.NODE_ENV === "production") {
+
+if (process.env.NODE_ENV !== "test") {
     mongoose.connect(mongoDB)
         .then(() => console.log("Connected to MongoDB"))
         .catch(err => console.log("Could not connect to MongoDB", err))
-
-    // Serve React frontend
-    app.use(express.static(path.join(__dirname, "frontend/build")));
-    app.get("*", (_, res) => {
-        res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-    });
 
     app.listen(port, () => {
         console.log(`Server running at http://localhost:${port}`);
