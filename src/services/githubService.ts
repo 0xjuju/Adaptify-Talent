@@ -1,9 +1,6 @@
 
 import axios from "axios";
 import { RepoItem } from "../interfaces/github.interface.js";
-import {Simulate} from "react-dom/test-utils";
-import keyDown = Simulate.keyDown;
-
 
 /**
  * Retrieve gitHub repo by username
