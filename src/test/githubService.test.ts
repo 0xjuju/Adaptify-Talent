@@ -1,5 +1,5 @@
 import { RepoProject } from "../interfaces/github.interface.js";
-import { getRepositoryByUsername } from "../services/githubService.js";
+import { getRepositoryByUsername, getRepoContent } from "../services/githubService.js";
 
 describe("Test github service return values", async () => {
 
@@ -20,7 +20,13 @@ describe("Test github service return values", async () => {
     it("should return a dictionary file map of the directory", async () => {
         const projects = await getRepositoryByUsername("0xjuju");
         const project = projects["data"].find((item: RepoProject) => item.name === "CopyTrader");
-        console.log(project);
+    });
+
+    it("should return a list of file directories for a github repository", async () => {
+        const files = await getRepoContent("0xjuju", "CopyTrader");
+        assert( "url" in files[0]);
+        assert( "type" in files[1]);
+        assert.strictEqual(files[0]["name"], ".gitignore");
     });
 });
 

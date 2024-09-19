@@ -12,7 +12,6 @@ export const getRepositoryByUsername = async (username: string) => {
     }
 }
 
-
 export const buildFileTree = async (repo: RepoItem[]) => {
     const fileTree: { [key: string]: any } = {};
     for (const item of repo) {
@@ -23,10 +22,22 @@ export const buildFileTree = async (repo: RepoItem[]) => {
             fileTree[item.name] = { url: item.downloads_url }
         }
     }
-
     return fileTree;
+};
 
-}
+export const getRepoContent = async (owner: string, repoName: string) => {
+    const { data } = await axios.get(`https://api.github.com/repos/${owner}/${repoName}/contents`);
+
+    return data.map((item: RepoItem) => ({
+        name: item.name,
+        type: item.type,
+        url: item.url,
+        download_url: item.downloads_url
+    }))
+};
+
+
+
 
 
 
