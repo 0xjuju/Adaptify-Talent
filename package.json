@@ -8,7 +8,6 @@
     "start": "node dist/index.js",
     "test": "NODE_ENV=test npx mocha --require tsx --timeout 10000 --file src/test/setup.ts 'src/test/**/*.test.ts'",
     "test:file": "NODE_ENV=test npx mocha --require tsx --timeout 10000 --file src/test/setup.ts --reporter spec --recursive"
-
   },
   "private": true,
   "keywords": [],
@@ -20,13 +19,14 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-validator": "^7.2.0",
-    "mongoose": "^8.6.1"
+    "mongoose": "^8.6.1",
+    "openai": "^4.67.1"
   },
   "devDependencies": {
     "@types/axios": "^0.9.36",
     "@types/express": "^4.17.21",
     "@types/mocha": "^10.0.8",
-    "@types/node": "^22.5.5",
+    "@types/node": "^22.7.4",
     "@types/react": "^18.3.6",
     "@types/react-dom": "^18.3.0",
     "@types/supertest": "^6.0.2",
