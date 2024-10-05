@@ -6,7 +6,9 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
-    "test": "NODE_ENV=test npx mocha --require tsx --timeout 10000 --file src/test/setup.ts 'src/test/**/*.test.ts'"
+    "test": "NODE_ENV=test npx mocha --require tsx --timeout 10000 --file src/test/setup.ts 'src/test/**/*.test.ts'",
+    "test:file": "NODE_ENV=test npx mocha --require tsx --timeout 10000 --file src/test/setup.ts --reporter spec --recursive"
+
   },
   "private": true,
   "keywords": [],
