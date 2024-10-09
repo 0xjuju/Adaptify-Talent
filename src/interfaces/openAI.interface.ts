@@ -1,5 +1,8 @@
+import {OpenAI} from "openai";
 
 
+export type AssistantTool = OpenAI.Beta.Assistants.AssistantTool;
+export type Assistant = OpenAI.Beta.Assistants.Assistant;
 
 interface Thread {
     id: string;
