@@ -1,6 +1,26 @@
-# AI Video Interview and Assessment System
+# Outdated Version <br>
+Production application is currently being built using AWS infrastructure. Please reach out for potential access. Here is the new summary: <br>
 
-This project is an AI-driven interview assessment platform designed for recruiters to evaluate candidates' skills comprehensively. It features video-based assessments, dynamically generated questionnaires, and technology-focused question trees to gain insights into each candidate’s skill level and suitability for specific roles.
+
+# Adaptify Talent
+
+Adaptify Talent is a platform that combines AI, knowledge graphs, and dynamically structured assessment 
+pipelines to help recruiters and agencies evaluate candidates more objectively. Resumes and job 
+descriptions are parsed, normalized, and used to generate adaptive assessments. Interactive Clusters
+and knowledge-graph-based traversal algorithms enable recruiters to spot gaps, patterns, and 
+opportunities within their talent pool.
+
+---
+
+## 🎓 Design Summary
+
+The system evaluates the suitability of candidate for a given role using multi-agent LLMs and a 
+knowledge graph built from parsed resume data. Dynamic assessments are created based on job 
+description metadata and recruiter notes, with personalized question trees generated using concise. 
+queries from knowledge graph. Suitability reports are generated for recruiters, and feedback reports
+are generated for candidates. Agencies and recruiters can turn their entire database of candidates 
+into an interactive cluster where they apply a vast amount of filters and visually drill-down into 
+skill, technology, demographic etc.
 
 ## Table of Contents
 
